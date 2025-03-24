@@ -1,3 +1,5 @@
-# osztaly-kezelo
-
-Ez egy osztály kezelő rendszer amit csak akkor lehet használni ha megvannak a megfelelő hozzáférési adataid.
+                              <<<<<>>>>>
+        Sziasztok ez itt egy krétára jellemző laravel projekt.
+        Ha nincs megfelelő hozzáférésed akkor csak nézegetni tudod az osztályokat.
+        Használd egészséggeé. 
+                              <<<<<>>>>>
