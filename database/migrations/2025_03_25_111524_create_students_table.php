@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('gender')->index();
             $table->unsignedBigInteger('class_id');
             $table->foreign('class_id')->references('id')->on('classes');
-            $table->string('logo')->index();
+            $table->string('logo')->nullable();
         });
     }
 

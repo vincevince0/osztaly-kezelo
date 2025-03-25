@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name')->index();
             $table->string('year')->index();
-            $table->string('logo')->index();
+            $table->string('logo')->nullable();
         });
     }
 
