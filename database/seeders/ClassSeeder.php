@@ -28,11 +28,14 @@ class ClassSeeder extends Seeder
      */
     public function run(): void
     {
-        foreach (self::ITEMS as $item) {
-            $class = new Osztaly();
-	        $class->name = $item;
-            $class->year = '2025';
-            $class->save();
+        for ($i = 2022; $i <= 2025; $i++) {
+            foreach (self::ITEMS as $item) {
+                $class = new Osztaly();
+                $class->name = $item;
+                $class->year = "$i";
+                $class->save();
+            }
         }
+        
     }
 }
