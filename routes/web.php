@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClassController;
+use App\Http\Controllers\Class_AverageController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -18,5 +19,5 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 Route::resource('classes',ClassController::class);
-
+Route::resource('class_average',Class_AverageController::class);
 require __DIR__.'/auth.php';

@@ -21,6 +21,11 @@
                         {{ __('Évfolyamok') }}
                     </x-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('class_average.index')" :active="request()->routeIs('class_average.index')">
+                        {{ __('Osztályok Átlaga') }}
+                    </x-nav-link>
+                </div>
             </div>
 
             <!-- Settings Dropdown -->
