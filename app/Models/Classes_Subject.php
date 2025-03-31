@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Classes_Subject extends Model
 {
     public $timestamps = false;
+    protected $table = 'classes_subjects';
 
     function subject()
     {

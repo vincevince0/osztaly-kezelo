@@ -19,7 +19,8 @@ return new class extends Migration
             $table->foreign('subject_id')->references('id')->on('subjects');
             $table->string('mark')->index();
             $table->dateTime('date')->index();
-            $table->string('logo')->index();
+            $table->string('logo')->nullable();
+
         });
     }
 

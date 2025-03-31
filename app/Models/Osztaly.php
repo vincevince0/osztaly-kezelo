@@ -3,11 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Stringable;
 
 class Osztaly extends Model
 {
     public $timestamps = false;
+    protected $table = 'classes';
 
     function classes_subject()
     {
