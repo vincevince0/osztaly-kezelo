@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('subjects', function (Blueprint $table) {
             $table->id();
             $table->string('name')->index();
-            $table->string('logo')->index();
+            $table->string('logo')->nullable();
         });
     }
 

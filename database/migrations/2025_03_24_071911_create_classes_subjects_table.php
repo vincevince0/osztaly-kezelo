@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreign('class_id')->references('id')->on('classes');
             $table->unsignedBigInteger('subject_id');
             $table->foreign('subject_id')->references('id')->on('subjects');
-            $table->string('logo')->index();
+            $table->string('logo')->nullable();
         });
     }
 
