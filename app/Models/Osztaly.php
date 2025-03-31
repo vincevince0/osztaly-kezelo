@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Osztaly extends Model
 {
     public $timestamps = false;
-    protected $table = 'classes'; // Updated table name
+    protected $table = 'classes';
 
     function classes_subject()
     {
