@@ -18,3 +18,4 @@ class Student extends Model
         return $this->belongsTo(Osztaly::class);
     }
 }
+
