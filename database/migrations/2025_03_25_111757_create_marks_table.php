@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('mark')->index();
             $table->dateTime('date')->index();
             $table->string('logo')->nullable();
+
         });
     }
 

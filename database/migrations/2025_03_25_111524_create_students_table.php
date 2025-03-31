@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('class_id');
             $table->foreign('class_id')->references('id')->on('classes');
             $table->string('logo')->nullable();
+
         });
     }
 
