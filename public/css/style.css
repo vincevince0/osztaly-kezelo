@@ -1,0 +1,66 @@
+/* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Set background and font */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Center the content */
+.container {
+    text-align: center;
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+/* Heading style */
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Button container */
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Button style */
+.btn {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 20px;
+    font-size: 16px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+/* Guest button */
+.guest-btn {
+    background-color: #28a745;
+}
+
+.guest-btn:hover {
+    background-color: #218838;
+}
