@@ -13,9 +13,11 @@ return new class extends Migration
     {
         Schema::create('classes_subjects', function (Blueprint $table) {
             $table->id();
-            //$table->timestamps();
-            $table->string ('class_id')->index();
-            $table->string ('subject_id')->index();
+            $table->unsignedBigInteger('class_id');
+            $table->foreign('class_id')->references('id')->on('classes');
+            $table->unsignedBigInteger('subject_id');
+            $table->foreign('subject_id')->references('id')->on('subjects');
+            $table->string('logo')->nullable();
         });
     }
 

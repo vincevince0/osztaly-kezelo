@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Osztaly;
 
 class ClassController extends Controller
 {
@@ -12,7 +12,8 @@ class ClassController extends Controller
      */
     public function index()
     {
-        //
+        $classes = Osztaly::all();
+        return view('classes.index', compact('classes'));
     }
 
     /**

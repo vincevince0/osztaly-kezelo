@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Mark;
 
 class MarkController extends Controller
 {
@@ -12,7 +12,8 @@ class MarkController extends Controller
      */
     public function index()
     {
-        //
+        $marks = Mark::all();
+        return view('marks.index', compact('marks'));
     }
 
     /**
