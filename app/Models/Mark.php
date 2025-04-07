@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Mark extends Model
 {
     public $timestamps = false;
+    protected $table = 'marks';
 
     function student()
     {
@@ -18,4 +19,3 @@ class Mark extends Model
         return $this->belongsTo(Subject::class);
     }
 }
-
