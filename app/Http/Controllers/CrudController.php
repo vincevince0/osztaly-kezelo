@@ -4,17 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Osztaly;
 
-class ClassController1 extends Controller
+class CrudController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $classes = Osztaly::all();
-        return view('crud.index', compact('classes'));
+        return view('crud.index');
     }
 
     /**

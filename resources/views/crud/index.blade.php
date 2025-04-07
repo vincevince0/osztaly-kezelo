@@ -12,11 +12,11 @@
                     <form method="GET" action="{{ request()->url() }}">
                         {{ __('Válassz adattáblát: ') }}
                         <select name="crud" id="crud" title="Adattábla" onchange="location = this.value">
-                        <option value="0">-- Adattáblák --</option>
-                            <option value="{{ route('crud.students') }}">
+                        <option value="{{ route('crud.index') }}" selected>-- Adattáblák --</option>
+                            <option value="{{ route('crud.students') }}" >
                                     Tanulók
                             </option>
-                            <option value="2" {{ request()->get('crud') == 2 ? 'selected' : '' }}>
+                            <option value="{{ route('subjects') }}">
                                     Tantárgyak
                             </option>
                             <option value="3" {{ request()->get('crud') == 3 ? 'selected' : '' }}>

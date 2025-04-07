@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Subject;
 
 class SubjectController extends Controller
 {
@@ -11,7 +12,8 @@ class SubjectController extends Controller
      */
     public function index()
     {
-        //
+        $subjects = Subject::all();
+        return view('crud.subjects', compact('subjects'));
     }
 
     /**
@@ -19,7 +21,7 @@ class SubjectController extends Controller
      */
     public function create()
     {
-        //
+        return view('crud.subjects.create');
     }
 
     /**

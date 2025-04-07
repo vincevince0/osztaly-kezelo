@@ -4,7 +4,9 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClassController;
 use App\Http\Controllers\Class_AverageController;
-use App\Http\Controllers\ClassController1;
+use App\Http\Controllers\CrudController;
+use App\Http\Controllers\StudentController;
+use App\Http\Controllers\SubjectController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -21,9 +23,21 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/crud.students', function () {
-    return view('students');
-});
+    return view('crud.students');
+})->name('crud.students');
+
+Route::get('/crud.subjects', [SubjectController::class, 'index'])->name('crud.subjects');
+
+
+Route::get('/crud.index', function () {
+    return view('crud.index');
+})->name('crud.index');
+
+
+
 Route::resource('classes',ClassController::class);
 Route::resource('class_average',Class_AverageController::class);
-Route::resource('crud',ClassController1::class);
+Route::resource('crud', CrudController::class);
+Route::resource('students', StudentController::class);
+Route::resource('subjects', SubjectController::class);
 require __DIR__.'/auth.php';
