@@ -16,16 +16,25 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
+                @auth
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('crud.index')" :active="request()->routeIs('crud.index')">
+                        {{ __('Adattáblák') }}
+                    </x-nav-link>
+                </div>
+                @endauth
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('classes.index')" :active="request()->routeIs('classes.index')">
                         {{ __('Évfolyamok') }}
                     </x-nav-link>
                 </div>
+                @auth
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('class_average.index')" :active="request()->routeIs('class_average.index')">
                         {{ __('Osztályok Átlaga') }}
                     </x-nav-link>
                 </div>
+                @endauth
             </div>
 
             <!-- Authentication Check -->

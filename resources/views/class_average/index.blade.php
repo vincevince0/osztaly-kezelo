@@ -10,8 +10,8 @@
             @foreach($classes->unique('name') as $class)
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    <div id="items-container" class="mt-4">
-                        {{$class->name}}
+                    <div id="items-container" class="mt-0">
+                        <p>{{$class->name}}</p>
                     </div>
                 </div>
             </div>
