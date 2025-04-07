@@ -26,7 +26,7 @@
                             <h3 class="font-semibold text-lg mt-4">{{ request()->get('year_id') }} {{ __(' osztályai: ') }}</h3>
                             <ul>
                                 @foreach($classes->where('year', request()->get('year_id')) as $class)
-                                    <a href="{{ route('login') }}" class="btn-class"><button><i>{{ $class->name }}</i></button></a>   
+                                <a href="{{ route('classes.show', [$class->year,$class->name]) }}" class="btn-class"><button><i>{{ $class->name }}</i></button></a>
                                 @endforeach
                             </ul>
                         @else
@@ -36,5 +36,15 @@
                 </div>
             </div>
         </div>
+            <div class="py-12">
+                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                        <div class="p-6 text-gray-900">
+                            <form method="GET" action="">
+                            </form>
+                        </div>               
+                    </div>
+                </div>
+            </div>
     </div>
 </x-app-layout>
