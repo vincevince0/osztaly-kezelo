@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClassController;
+use App\Http\Controllers\MarkController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -19,5 +20,6 @@ Route::middleware('auth')->group(function () {
 });
 Route::get('/classes', [ClassController::class, 'index'])->name('classes.index');
 Route::get('/classes/{year}/{class}', [ClassController::class, 'show'])->name('classes.show');
+Route::resource('marks',MarkController::class);
 
 require __DIR__.'/auth.php';
