@@ -19,4 +19,3 @@ class Mark extends Model
         return $this->belongsTo(Subject::class);
     }
 }
-

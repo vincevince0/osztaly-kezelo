@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Mark;
+use App\Models\Osztaly;
+use App\Models\Student;
 
 class MarkController extends Controller
 {
@@ -13,7 +15,12 @@ class MarkController extends Controller
     public function index()
     {
         $marks = Mark::all();
-        return view('marks.index', compact('marks'));
+        $classes = Osztaly::where('year', 2025)->get();
+        $students = Student::all();
+
+        return view('marks.index', compact('marks','classes','students'));
+        
+        
     }
 
     /**
