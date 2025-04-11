@@ -18,7 +18,8 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-Route::resource('classes',ClassController::class);
+Route::get('/classes', [ClassController::class, 'index'])->name('classes.index');
+Route::get('/classes/{year}/{class}', [ClassController::class, 'show'])->name('classes.show');
 Route::resource('marks',MarkController::class);
 
 require __DIR__.'/auth.php';

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Osztaly;
+use App\Models\Student;
 
 class ClassController extends Controller
 {
@@ -35,9 +36,12 @@ class ClassController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($year,$class)
     {
-        //
+        $classes = Osztaly::all();
+        $classData = Osztaly::where('year', $year)->where('name', $class)->get();
+        $students = Student::all();
+        return view('classes.show', compact('classes','classData','students'));
     }
 
     /**

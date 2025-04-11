@@ -40,27 +40,3 @@ h1 {
     flex-direction: column;
     gap: 15px;
 }
-
-/* Button style */
-.btn {
-    background-color: #007bff;
-    color: white;
-    padding: 12px 20px;
-    font-size: 16px;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
-.btn:hover {
-    background-color: #0056b3;
-}
-
-/* Guest button */
-.guest-btn {
-    background-color: #28a745;
-}
-
-.guest-btn:hover {
-    background-color: #218838;
-}
