@@ -14,4 +14,13 @@
             </div>
         </div>
     </div>
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-gray-900">
+                    <a href="{{ route('classes.index') }}"><button class="btn default" type="submit" id="my-id" name="btn_classes"><img src="{{URL::asset('/image/classes.png')}}">Évfolyamok</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
 </x-app-layout>
