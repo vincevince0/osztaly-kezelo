@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClassController;
 use App\Http\Controllers\MarkController;
+use App\Http\Controllers\StudentController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -20,5 +21,6 @@ Route::middleware('auth')->group(function () {
 });
 Route::resource('classes',ClassController::class);
 Route::resource('marks',MarkController::class);
+Route::resource('students', StudentController::class);
 
 require __DIR__.'/auth.php';

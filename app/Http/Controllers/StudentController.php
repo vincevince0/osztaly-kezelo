@@ -51,7 +51,22 @@ class StudentController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+       
+    // Find the student by ID
+    $student = Student::findOrFail($id);
+
+    // Validate the incoming data (e.g. just the name for now)
+    $request->validate([
+        'name' => 'required|string|max:255',
+    ]);
+
+    // Update the student's name
+    $student->name = $request->input('name');
+    $student->save();  // Save changes
+
+    // Redirect back to a student list or profile page (or wherever you want)
+    return redirect()->route('students.index')->with('success', 'Diák neve módosítva!');
+
     }
 
     /**

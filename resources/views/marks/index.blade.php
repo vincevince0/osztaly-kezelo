@@ -25,11 +25,25 @@
                         @if(request()->has('class_id'))
                             <h3 class="font-semibold text-lg mt-4">{{ __('Diákok az osztályban: ') }}</h3>
                             <ul>
-                                @foreach($students->where('class_id',request()->get('class_id'))->sortBy('name') as $student)
-                                <option value="">{{$student->name}}</option>
-                            @endforeach
+                            @foreach($students->where('class_id', request()->get('class_id'))->sortBy('name') as $student)
+                            <li class="flex justify-between items-center mb-2">
+                            <span>{{ $student->name }}</span>
+                            <div class="flex gap-2">
+                                <a href="">
+                                    <button class="bg-white text-black px-2 py-1 rounded border hover:bg-gray-100">Jegyek</button>
+                                </a>
+                                <a href="{{ route('marks.edit', $student->id) }}">
+                                    <button class="bg-white text-black px-2 py-1 rounded border hover:bg-gray-100">Módosítás</button>
+                                </a>
+                                <a href="">
+                                    <button class="bg-white text-black px-2 py-1 rounded border hover:bg-gray-100">Törlés</button>
+                                </a>
+                            </div>
+                        </li>
 
-                            </ul>
+                            @endforeach
+                        </ul>
+
                         @else
                             <p>{{ __('Válasszon ki egy osztályt.') }}</p>
                         @endif

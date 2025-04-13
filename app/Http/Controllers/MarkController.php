@@ -52,7 +52,10 @@ class MarkController extends Controller
      */
     public function edit(string $id)
     {
-        //
+       
+        $student = Student::findOrFail($id);
+        return view('marks.edit', compact('student'));
+
     }
 
     /**
