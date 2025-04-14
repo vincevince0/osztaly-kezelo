@@ -25,7 +25,7 @@
                             <option value="{{ route('crud.classes_subjects') }}">
                                     Osztályok_Tantárgyai
                             </option>
-                            <option value="5" {{ request()->get('crud') == 5 ? 'selected' : '' }}>
+                            <option value="{{ route('crud.marks') }}">
                                     Osztályzatok
                             </option>
                         </select>

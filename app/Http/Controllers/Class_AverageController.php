@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Osztaly;
+use App\Models\Student;
+use App\Models\Mark;
 
 class Class_AverageController extends Controller
 
@@ -13,8 +14,8 @@ class Class_AverageController extends Controller
      */
     public function index()
     {
-        $classes = Osztaly::all();
-        return view('class_average.index', compact('classes'));
+        $marks = Mark::with(['student'])->get();
+        return view('class_average.index', compact('marks'));
     }
 
     /**
