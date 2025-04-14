@@ -11,8 +11,9 @@
     <div class="container">
         <h1>Üdvözöljük!</h1>
         <div class="options">
-            <a href="{{ route('login') }}" class="btn btn-login">Bejelentkezés</a>
-            <a href="{{ route('dashboard') }}" class="btn btn-student">Folytatás tanulóként</a>
+            <a href="{{ route('login') }}" class="btn-login">Bejelentkezés</a>
+            <a href="{{ route('register') }}" class="btn-register">Regisztráció</a>
+            <a href="{{ route('dashboard') }}" class="btn-student">Folytatás tanulóként</a>
         </div>
     </div>
 </body>

@@ -2,16 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Mark;
+use App\Models\Osztaly;
+use App\Models\Student;
 
-class StudentController extends Controller
+class CrudController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        return view('crud.index');
     }
 
     /**

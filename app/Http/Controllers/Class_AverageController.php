@@ -3,15 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Student;
+use App\Models\Mark;
 
-class SubjectController extends Controller
+class Class_AverageController extends Controller
+
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $marks = Mark::with(['student'])->get();
+        return view('class_average.index', compact('marks'));
     }
 
     /**

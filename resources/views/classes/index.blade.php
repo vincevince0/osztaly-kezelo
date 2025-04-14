@@ -26,7 +26,11 @@
                             <h3 class="font-semibold text-lg mt-4">{{ request()->get('year_id') }} {{ __(' osztályai: ') }}</h3>
                             <ul>
                                 @foreach($classes->where('year', request()->get('year_id')) as $class)
+<<<<<<< HEAD
                                 <a href="{{ route('classes.show', [$class->year,$class->name]) }}" class="btn-class"><button><i>{{ $class->name }}</i></button></a>
+=======
+                                    <a href="{{ route('login') }}" class="btn-class"><button><i>{{ $class->name }}</i></button></a>   
+>>>>>>> Áki
                                 @endforeach
                             </ul>
                         @else
@@ -36,6 +40,7 @@
                 </div>
             </div>
         </div>
+<<<<<<< HEAD
             <div class="py-12">
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -46,5 +51,7 @@
                     </div>
                 </div>
             </div>
+=======
+>>>>>>> Áki
     </div>
 </x-app-layout>
