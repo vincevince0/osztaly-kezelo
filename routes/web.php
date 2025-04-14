@@ -23,4 +23,7 @@ Route::resource('classes',ClassController::class);
 Route::resource('marks',MarkController::class);
 Route::resource('students', StudentController::class);
 
+Route::get('/marks/{student}', [MarkController::class, 'show'])->name('marks.show');
+
+
 require __DIR__.'/auth.php';

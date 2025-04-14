@@ -29,15 +29,10 @@
                             <li class="flex justify-between items-center mb-2">
                             <span>{{ $student->name }}</span>
                             <div class="flex gap-2">
-                                <a href="">
-                                    <button class="bg-white text-black px-2 py-1 rounded border hover:bg-gray-100">Jegyek</button>
+                                <a href="{{ route('marks.show', $student->id) }}?class_id={{ request()->get('class_id') }}">
+                                <button class="bg-white text-black px-2 py-1 rounded border hover:bg-gray-100">Jegyek</button>
                                 </a>
-                                <a href="{{ route('marks.edit', $student->id) }}">
-                                    <button class="bg-white text-black px-2 py-1 rounded border hover:bg-gray-100">Módosítás</button>
-                                </a>
-                                <a href="">
-                                    <button class="bg-white text-black px-2 py-1 rounded border hover:bg-gray-100">Törlés</button>
-                                </a>
+
                             </div>
                         </li>
 

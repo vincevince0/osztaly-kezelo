@@ -42,9 +42,12 @@ class MarkController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Student $student)
     {
-        //
+        
+        $marks = $student->marks;
+
+        return view('marks.show', compact('student', 'marks'));
     }
 
     /**
@@ -52,10 +55,7 @@ class MarkController extends Controller
      */
     public function edit(string $id)
     {
-       
-        $student = Student::findOrFail($id);
-        return view('marks.edit', compact('student'));
-
+       //
     }
 
     /**
