@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('subject_id');
             $table->foreign('subject_id')->references('id')->on('subjects');
             $table->string('mark')->index();
-            $table->dateTime('date')->index();
+            $table->date('date')->index();
             $table->string('logo')->nullable();
 
         });

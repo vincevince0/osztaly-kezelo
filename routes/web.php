@@ -8,6 +8,9 @@ use App\Http\Controllers\CrudController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\ClassCrudController;
+use App\Http\Controllers\Classes_SubjectController;
+use App\Http\Controllers\MarkController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -23,11 +26,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/crud.students', function () {
-    return view('crud.students');
-})->name('crud.students');
 
 Route::get('/crud.subjects', [SubjectController::class, 'index'])->name('crud.subjects');
+Route::get('/crud.classes_subjects', [Classes_SubjectController::class, 'index'])->name('crud.classes_subjects');
 
 
 Route::get('/crud.index', function () {
@@ -35,9 +36,11 @@ Route::get('/crud.index', function () {
 })->name('crud.index');
 
 Route::get('/crud.classes', [ClassCrudController::class, 'index'])->name('crud.classes');
+Route::get('/crud.students', [StudentController::class, 'index'])->name('crud.students');
+Route::get('/crud.marks', [MarkController::class, 'index'])->name('crud.marks');
 
-
-
+Route::resource('marks',MarkController::class);
+Route::resource('classes_subjects',Classes_SubjectController::class);
 Route::resource('classescrud',ClassCrudController::class);
 Route::resource('classes',ClassController::class);
 Route::resource('class_average',Class_AverageController::class);

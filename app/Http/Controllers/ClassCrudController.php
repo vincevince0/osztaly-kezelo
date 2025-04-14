@@ -30,12 +30,15 @@ class ClassCrudController extends Controller
      */
     public function store(Request $request)
     {
+
         $request->validate([
             'name' => 'required|string|max:255',
+            'year' => 'required|integer|max:3000',
         ]);
 
         $class = new Osztaly();
         $class->name = $request->name;
+        $class->year = $request->year;
         $class->save();
 
         return redirect()->route('crud.classes')->with('success', "A(z) {$class->name} tantárgy sikeresen létrehozva.");
@@ -54,7 +57,8 @@ class ClassCrudController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $class = Osztaly::find($id);
+        return view('crud.classes_edit', compact('class'));
     }
 
     /**
@@ -62,7 +66,19 @@ class ClassCrudController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+
+        $class = Osztaly::findOrFail($id);
+
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'year' => 'required|integer|max:3000',
+        ]);
+    
+        $class->name = $request->name;
+        $class->year = $request->year;
+        $class->save();
+    
+        return redirect()->route('crud.classes')->with('success', 'Osztály frissítve!');
     }
 
     /**

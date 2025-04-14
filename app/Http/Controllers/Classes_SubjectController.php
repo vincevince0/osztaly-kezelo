@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Classes_Subject;
+use App\Models\Osztaly;
+use App\Models\Subject;
 
 class Classes_SubjectController extends Controller
 {
@@ -11,7 +14,8 @@ class Classes_SubjectController extends Controller
      */
     public function index()
     {
-        //
+        $classes_subjects = Classes_Subject::with(['class', 'subject'])->get();
+        return view('crud.classes_subjects', compact('classes_subjects'));
     }
 
     /**
@@ -19,7 +23,10 @@ class Classes_SubjectController extends Controller
      */
     public function create()
     {
-        //
+        $classes = Osztaly::all();
+        $subjects = Subject::all();
+
+        return view('crud.classes_subjects_create', compact('classes', 'subjects'));
     }
 
     /**
@@ -27,7 +34,17 @@ class Classes_SubjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'class_id' => 'required|exists:classes,id',
+            'subject_id' => 'required|exists:subjects,id',
+        ]);
+    
+        $vmi = new Classes_Subject();
+        $vmi->class_id = $request->class_id;
+        $vmi->subject_id = $request->subject_id;
+        $vmi->save();
+    
+        return redirect()->route('crud.classes_subjects')->with('success', 'Kapcsolat létrehozva!');
     }
 
     /**
@@ -41,24 +58,42 @@ class Classes_SubjectController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $classes_subjects = Classes_Subject::find($id);
+        $classes = Osztaly::all();
+        $subjects = Subject::all();
+
+        return view('crud.classes_subjects_edit', compact('classes_subjects', 'classes', 'subjects'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'class_id' => 'required|exists:classes,id',
+            'subject_id' => 'required|exists:subjects,id',
+        ]);
+
+        $class_subject = Classes_Subject::find($id);
+        $class_subject->class_id = $request->class_id;
+        $class_subject->subject_id = $request->subject_id;
+        $class_subject->save();
+
+        return redirect()->route('crud.classes_subjects')->with('success', 'Kapcsolat frissítve.');
     }
+
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
-        //
+        $class_subject = Classes_Subject::find($id);
+        $class_subject->delete();
+
+        return redirect()->route('crud.classes_subjects')->with('success', "sikeres törlés");
     }
 }

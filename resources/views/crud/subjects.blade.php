@@ -22,10 +22,10 @@
                             <option value="{{ route('crud.classes') }}">
                                     Osztályok
                             </option>
-                            <option value="4" {{ request()->get('crud') == 4 ? 'selected' : '' }}>
+                            <option value="{{ route('crud.classes_subjects') }}">
                                     Osztályok_Tantárgyai
                             </option>
-                            <option value="5" {{ request()->get('crud') == 5 ? 'selected' : '' }}>
+                            <option value="{{ route('crud.marks') }}">
                                     Osztályzatok
                             </option>
                         </select>
