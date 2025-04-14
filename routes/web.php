@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClassController;
 use App\Http\Controllers\MarkController;
+use App\Http\Controllers\StudentController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -17,6 +18,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/classes/edit/{year}/{class}', [ClassController::class, 'edit'])->name('classes.edit');
+    Route::get('/classes/create/{year}/{class}', [ClassController::class, 'create'])->name('classes.create');
+    Route::post('/classes', [StudentController::class, 'store'])->name('student.store');
+    Route::delete('/students/{student}', [StudentController::class, 'destroy'])->name('student.destroy');
+
 });
 Route::get('/classes', [ClassController::class, 'index'])->name('classes.index');
 Route::get('/classes/{year}/{class}', [ClassController::class, 'show'])->name('classes.show');

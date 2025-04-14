@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Student;
 
 class StudentController extends Controller
 {
@@ -27,7 +28,13 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $student  = new Student();
+        $student->name = $request->input('name');
+        $student->gender = $request->input('gender');
+        $student->class_id = $request->input('classid');
+        $student->save();
+
+        return redirect()->route('classes.index')->with('success', "{$student->name} sikeresen létrehozva");
     }
 
     /**
@@ -59,6 +66,9 @@ class StudentController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $student  = Student::find($id);
+        $student->delete();
+
+        return redirect()->route('classes.index')->with('success', "{$student->name} sikeresen törölve");
     }
 }
