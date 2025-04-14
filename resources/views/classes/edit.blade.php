@@ -13,16 +13,19 @@
                         $year = $classData->first()->year;
                         $name = $classData->first()->name;
                     @endphp
-                    <h3 class="font-semibold text-lg mt-4"> A {{ $name }} {{ __(' névsora:') }} <a href="{{ route('classes.create', [$year,$name]) }}" class="btn-class"><button class="btn btn-new"><i>{{ 'Új tanuló' }}</i></button></a></h3>            
+                    <h3 class="font-semibold text-lg mt-4"> A {{ $name }} {{ __(' névsora:') }} <a href="{{ route('students.create', [$year,$name]) }}" class="btn-class"><button class="btn btn-new"><i>{{ 'Új tanuló' }}</i></button></a></h3>            
                     @foreach($classes->where('year', $year)->where('name', $name) as $class)
                         @foreach($students->where('class_id',$class->id)->sortBy('name') as $student)
                             <option value="">{{$student->name}}</option>
-                            <a href="{{ route('marks.edit', $student->id) }}">
+                            <a href="{{ route('students.edit', [$student->id,$student->class_id]) }}">
                                 <button class="btn btn-edit">Áthelyezés</button>
                             </a>
-                            <a href="{{ route('student.destroy', $student->id) }}">
-                                <button class="btn btn-delete">Törlés</button>
-                            </a>
+
+                            <form action="{{ route('students.destroy', $student->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-delete">Törlés</button>
+                            </form>
                         @endforeach
                     @endforeach
                 </div>

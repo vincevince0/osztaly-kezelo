@@ -20,10 +20,9 @@ class ClassController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create($year,$class)
+    public function create()
     {
-        $classData = Osztaly::where('year', $year)->where('name', $class)->get();
-        return view('classes.create', compact('classData'));
+        
     }
 
     /**

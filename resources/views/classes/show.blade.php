@@ -54,7 +54,7 @@
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 text-gray-900">
-                        <h3 class="font-semibold text-lg mt-4"> A {{ $name }} {{ __(' névsora:') }} @auth<a href="{{ route('classes.edit', [$class->year,$class->name]) }}" class="btn-class"><button class="btn btn-student-edit"><i>{{ 'Névsor módosítása' }}</i></button></a>@endauth</h3>
+                        <h3 class="font-semibold text-lg mt-4"> A {{ $name }} {{ __(' névsora:') }} @auth<a href="{{ route('classes.edit', [$class->year,$name]) }}" class="btn-class"><button class="btn btn-student-edit"><i>{{ 'Névsor módosítása' }}</i></button></a>@endauth</h3>
                        
                         @foreach($classes->where('year', $year)->where('name', $name) as $class)
                             @foreach($students->where('class_id',$class->id)->sortBy('name') as $student)

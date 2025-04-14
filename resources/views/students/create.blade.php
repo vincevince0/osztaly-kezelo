@@ -15,17 +15,17 @@
                         $classid = $classData->first()->id;
                     @endphp
                     <h3 class="font-semibold text-lg mt-4"> A {{ $name }} {{ __(' osztályhoz új tanuló hozzáadása:') }}</h3>
-                    <form action="{{route('student.store')}}" method="post">
+                    <form action="{{route('students.store')}}" method="post">
                         @csrf
                         <fieldset>
                             <label for="name">Név</label>
                             <input type="text" id="name" name="name">
                             <label for="name">Nem</label>
                             <select name="gender" id="gender">
-                                <option value="male">F</option>
-                                <option value="female">N</option>
+                                <option value="F">F</option>
+                                <option value="N">N</option>
                             </select>
-                            <input type="hidden" name="classid" value="{{ $classid }}">
+                            <input type="hidden" name="class_id" value="{{ $classid }}">
                         </fieldset>
                         <button class="btn btn-save"type="submit">Ment</button>
                     </form>
