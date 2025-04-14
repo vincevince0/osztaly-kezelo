@@ -16,10 +16,10 @@
                             <option value="{{ route('crud.students') }}">
                                     Tanulók
                             </option>
-                            <option value="{{ route('crud.subjects') }}" selected>
+                            <option value="{{ route('crud.subjects') }}">
                                     Tantárgyak
                             </option>
-                            <option value="{{ route('crud.classes') }}">
+                            <option value="{{ route('crud.classes') }}" selected>
                                     Osztályok
                             </option>
                             <option value="4" {{ request()->get('crud') == 4 ? 'selected' : '' }}>
@@ -39,32 +39,34 @@
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
             <div class="p-6 text-gray-900">
                 <div class="flex justify-between items-center mb-4">
-                    <h2 class="text-xl font-bold">Tantárgyak Listája</h2>
-                    <a href="{{ route('subjects.create') }}" class="inline-block px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">
-                        + Új Tantárgy
+                    <h2 class="text-xl font-bold">Osztályok Listája</h2>
+                    <a href="{{ route('classescrud.create') }}" class="inline-block px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">
+                        + Új Osztály
                     </a>
                 </div>
 
-                @if($subjects->isEmpty())
+                @if($classescrud->isEmpty())
                     <p class="text-gray-500">---</p>
                 @else
                     <table class="min-w-full divide-y divide-gray-200">
                         <thead class="bg-gray-100">
                             <tr>
                                 <th class="px-4 py-2 text-left text-sm font-semibold text-gray-700">ID</th>
-                                <th class="px-4 py-2 text-left text-sm font-semibold text-gray-700">Tantárgy név</th>
+                                <th class="px-4 py-2 text-left text-sm font-semibold text-gray-700">Osztály</th>
+                                <th class="px-4 py-2 text-left text-sm font-semibold text-gray-700">Évfolyam</th>
                                 <th class="px-4 py-2 text-left text-sm font-semibold text-gray-700">Műveletek</th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-100">
-                            @foreach($subjects as $subject)
+                            @foreach($classescrud as $class)
                                 <tr>
-                                    <td class="px-4 py-2 text-sm text-gray-900">{{ $subject->id }}</td>
-                                    <td class="px-4 py-2 text-sm text-gray-900">{{ $subject->name }}</td>
+                                    <td class="px-4 py-2 text-sm text-gray-900">{{ $class->id }}</td>
+                                    <td class="px-4 py-2 text-sm text-gray-900">{{ $class->name }}</td>
+                                    <td class="px-4 py-2 text-sm text-gray-900">{{ $class->year }}</td>
                                     <td class="px-4 py-2 text-sm">
-                                        <a href="{{ route('subjects.edit', $subject->id) }}" class="text-indigo-600 hover:underline mr-4">Módosítás</a>
+                                        <a href="{{ route('classescrud.edit', $class->id) }}" class="text-indigo-600 hover:underline mr-4">Módosítás</a>
                                         
-                                        <form action="{{ route('subjects.destroy', $subject->id) }}" method="POST" class="inline-block" onsubmit="return confirm('Biztos vagy benne?');">
+                                        <form action="{{ route('classescrud.destroy', $class->id) }}" method="POST" class="inline-block" onsubmit="return confirm('Biztos vagy benne?');">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="text-red-600 hover:underline">Törlés</button>

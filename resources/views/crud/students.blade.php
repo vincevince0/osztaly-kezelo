@@ -16,10 +16,10 @@
                             <option value="{{ route('crud.students') }}" selected>
                                     Tanulók
                             </option>
-                            <option value="{{ route('subjects') }}">
+                            <option value="{{ route('crud.subjects') }}">
                                     Tantárgyak
                             </option>
-                            <option value="3" {{ request()->get('crud') == 3 ? 'selected' : '' }}>
+                            <option value="{{ route('crud.classes') }}">
                                     Osztályok
                             </option>
                             <option value="4" {{ request()->get('crud') == 4 ? 'selected' : '' }}>

@@ -21,7 +21,7 @@ class SubjectController extends Controller
      */
     public function create()
     {
-        return view('crud.subjects.create');
+        return view('crud.subjects_create');
     }
 
     /**
@@ -29,7 +29,15 @@ class SubjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255|unique:subjects,name',
+        ]);
+
+        $subject = new Subject();
+        $subject->name = $request->name;
+        $subject->save();
+
+        return redirect()->route('crud.subjects')->with('success', "A(z) {$subject->name} tantárgy sikeresen létrehozva.");
     }
 
     /**
@@ -45,7 +53,9 @@ class SubjectController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $subject = subject::find($id);
+        return view('crud.subjects_edit', compact('subject'));
+
     }
 
     /**
@@ -53,7 +63,16 @@ class SubjectController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $subject = Subject::findOrFail($id);
+
+        $request->validate([
+            'name' => 'required|string|max:255|unique:subjects,name,' . $subject->id,
+        ]);
+
+        $subject->name = $request->name;
+        $subject->save();
+
+        return redirect()->route('crud.subjects')->with('success', "A(z) {$subject->name} sikeresen frissítve.");
     }
 
     /**
@@ -61,6 +80,9 @@ class SubjectController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $subject = Subject::find($id);
+        $subject->delete();
+
+        return redirect()->route('crud.subjects')->with('success', "{$subject->name} sikeresen törölve");
     }
 }
