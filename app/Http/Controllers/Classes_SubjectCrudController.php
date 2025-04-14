@@ -7,7 +7,7 @@ use App\Models\Classes_Subject;
 use App\Models\Osztaly;
 use App\Models\Subject;
 
-class Classes_SubjectController extends Controller
+class Classes_SubjectCrudController extends Controller
 {
     /**
      * Display a listing of the resource.

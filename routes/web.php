@@ -5,11 +5,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClassController;
 use App\Http\Controllers\Class_AverageController;
 use App\Http\Controllers\CrudController;
-use App\Http\Controllers\StudentController;
-use App\Http\Controllers\SubjectController;
+use App\Http\Controllers\StudentCrudController;
+use App\Http\Controllers\SubjectCrudController;
 use App\Http\Controllers\ClassCrudController;
-use App\Http\Controllers\Classes_SubjectController;
-use App\Http\Controllers\MarkController;
+use App\Http\Controllers\Classes_SubjectCrudController;
+use App\Http\Controllers\MarkCrudController;
 
 
 Route::get('/', function () {
@@ -27,8 +27,8 @@ Route::middleware('auth')->group(function () {
 });
 
 
-Route::get('/crud.subjects', [SubjectController::class, 'index'])->name('crud.subjects');
-Route::get('/crud.classes_subjects', [Classes_SubjectController::class, 'index'])->name('crud.classes_subjects');
+Route::get('/crud.subjects', [SubjectCrudController::class, 'index'])->name('crud.subjects');
+Route::get('/crud.classes_subjects', [Classes_SubjectCrudController::class, 'index'])->name('crud.classes_subjects');
 
 
 Route::get('/crud.index', function () {
@@ -36,15 +36,15 @@ Route::get('/crud.index', function () {
 })->name('crud.index');
 
 Route::get('/crud.classes', [ClassCrudController::class, 'index'])->name('crud.classes');
-Route::get('/crud.students', [StudentController::class, 'index'])->name('crud.students');
-Route::get('/crud.marks', [MarkController::class, 'index'])->name('crud.marks');
+Route::get('/crud.students', [StudentCrudController::class, 'index'])->name('crud.students');
+Route::get('/crud.marks', [MarkCrudController::class, 'index'])->name('crud.marks');
 
-Route::resource('marks',MarkController::class);
-Route::resource('classes_subjects',Classes_SubjectController::class);
+Route::resource('markscrud',MarkCrudController::class);
+Route::resource('classes_subjectscrud',controller: Classes_SubjectCrudController::class);
 Route::resource('classescrud',ClassCrudController::class);
 Route::resource('classes',ClassController::class);
 Route::resource('class_average',Class_AverageController::class);
 Route::resource('crud', CrudController::class);
-Route::resource('students', StudentController::class);
-Route::resource('subjects', SubjectController::class);
+Route::resource('studentscrud', StudentCrudController::class);
+Route::resource('subjectscrud', SubjectCrudController::class);
 require __DIR__.'/auth.php';

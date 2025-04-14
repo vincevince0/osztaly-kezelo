@@ -40,7 +40,7 @@
             <div class="p-6 text-gray-900">
                 <div class="flex justify-between items-center mb-4">
                     <h2 class="text-xl font-bold">Tanulók Listája</h2>
-                    <a href="{{ route('students.create') }}" class="inline-block px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">
+                    <a href="{{ route('studentscrud.create') }}" class="inline-block px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">
                         + Új Tanuló
                     </a>
                 </div>
@@ -70,9 +70,9 @@
                                         {{ $student->class ? $student->class->name : 'Nincs osztály' }}
                                     </td>
                                     <td class="px-4 py-2 text-sm">
-                                        <a href="{{ route('students.edit', $student->id) }}" class="text-indigo-600 hover:underline mr-4">Módosítás</a>
+                                        <a href="{{ route('studentscrud.edit', $student->id) }}" class="text-indigo-600 hover:underline mr-4">Módosítás</a>
                 
-                                        <form action="{{ route('students.destroy', $student->id) }}" method="POST" class="inline-block" onsubmit="return confirm('Biztos vagy benne?');">
+                                        <form action="{{ route('studentscrud.destroy', $student->id) }}" method="POST" class="inline-block" onsubmit="return confirm('Biztos vagy benne?');">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="text-red-600 hover:underline">Törlés</button>

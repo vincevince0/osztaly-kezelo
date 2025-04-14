@@ -18,7 +18,7 @@
                     </div>
                 @endif
 
-                <form method="POST" action="{{ route('subjects.update', $subject->id) }}">
+                <form method="POST" action="{{ route('subjectscrud.update', $subject->id) }}">
                     @csrf
                     @method('PUT')
 

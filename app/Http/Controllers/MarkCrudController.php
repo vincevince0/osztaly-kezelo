@@ -7,7 +7,7 @@ use App\Models\Mark;
 use App\Models\Subject;
 use App\Models\Student;
 
-class MarkController extends Controller
+class MarkCrudController extends Controller
 {
     /**
      * Display a listing of the resource.

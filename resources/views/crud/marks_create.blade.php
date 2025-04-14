@@ -20,7 +20,7 @@
                         </div>
                     @endif
 
-                    <form action="{{ route('marks.store') }}" method="POST">
+                    <form action="{{ route('markscrud.store') }}" method="POST">
                         @csrf
 
                         <div class="mb-4">

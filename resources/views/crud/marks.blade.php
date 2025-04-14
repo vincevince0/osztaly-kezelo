@@ -40,7 +40,7 @@
             <div class="p-6 text-gray-900">
                 <div class="flex justify-between items-center mb-4">
                     <h2 class="text-xl font-bold">Osztályzatok Listája</h2>
-                    <a href="{{ route('marks.create') }}" class="inline-block px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">
+                    <a href="{{ route('markscrud.create') }}" class="inline-block px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">
                         + Új Osztályzat
                     </a>
                 </div>
@@ -68,9 +68,9 @@
                                     <td class="px-4 py-2 text-sm text-gray-900">{{ $mark->mark }}</td>
                                     <td class="px-4 py-2 text-sm text-gray-900">{{ $mark->date }}</td>
                                     <td class="px-4 py-2 text-sm">
-                                        <a href="{{ route('marks.edit', $mark->id) }}" class="text-indigo-600 hover:underline mr-4">Módosítás</a>
+                                        <a href="{{ route('markscrud.edit', $mark->id) }}" class="text-indigo-600 hover:underline mr-4">Módosítás</a>
                 
-                                        <form action="{{ route('marks.destroy', $mark->id) }}" method="POST" class="inline-block" onsubmit="return confirm('Biztos vagy benne?');">
+                                        <form action="{{ route('markscrud.destroy', $mark->id) }}" method="POST" class="inline-block" onsubmit="return confirm('Biztos vagy benne?');">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="text-red-600 hover:underline">Törlés</button>
