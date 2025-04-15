@@ -14,23 +14,19 @@ class MarkSeeder extends Seeder
 {
     public function run(): void
     {
-        // Csak a 2025-ös osztályok ID-i
         $classes2025 = Osztaly::where('year', 2025)->pluck('id');
 
-        // Az ezekhez tartozó tanulók
         $students2025 = Student::whereIn('class_id', $classes2025)->get();
 
         foreach ($students2025 as $student) {
-            // Az osztályához tartozó tantárgyak
             $subjectIds = Classes_Subject::where('class_id', $student->class_id)
                 ->pluck('subject_id')
                 ->toArray();
 
             if (empty($subjectIds)) {
-                continue; // Ha nincs tantárgy, ugrunk
+                continue; 
             }
 
-            // Generáljunk 3-5 jegyet minden tanulónak
             $marksToGenerate = rand(3, 5);
 
             for ($i = 0; $i < $marksToGenerate; $i++) {
@@ -38,7 +34,7 @@ class MarkSeeder extends Seeder
                     'student_id' => $student->id,
                     'subject_id' => $subjectIds[array_rand($subjectIds)],
                     'mark' => rand(1, 5),
-                    'date' => Carbon::now()->toDateString(), // mai dátum
+                    'date' => Carbon::now()->toDateString(), 
                 ]);
             }
         $items = [
@@ -53,8 +49,8 @@ class MarkSeeder extends Seeder
             $mark = new Mark();
             $mark->student_id = $item['student_id'];
             $mark->subject_id = $item['subject_id'];
-            $mark->mark = rand(1, 5); // Random mark between 1 and 5
-            $mark->date = Carbon::now()->subDays(rand(1, 180))->format('Y-m-d H:i:s'); // Random date within the last 180 days
+            $mark->mark = rand(1, 5); 
+            $mark->date = Carbon::now()->subDays(rand(1, 180))->format('Y-m-d H:i:s'); 
             $mark->logo = $item['logo'];
             $mark->save();
         }

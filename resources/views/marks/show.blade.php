@@ -17,16 +17,11 @@
                     </a>
 
                     
-                    <a href="{{ route('marks.create') }}?student_id={{ $student->id }}"
+                    @auth<a href="{{ route('marks.create') }}?student_id={{ $student->id }}"
    class="bg-gray-200 text-black px-3 py-2 rounded hover:bg-gray-300 border border-gray-400 inline-block mb-4">
     + Új jegy hozzáadása 
-</a> 
+</a> @endauth
 
-<!-- <p>Student ID: {{ $student->id }}</p>
-<a href="{{ url('/marks/create') }}?student_id=36"
-   class="bg-gray-200 text-black px-3 py-2 rounded hover:bg-gray-300 border border-gray-400 inline-block mb-4">
-   + Új jegy hozzáadása
-</a> -->
 
 
 
@@ -39,7 +34,7 @@
             <th class="px-4 py-2 border">{{ __('Tantárgy') }}</th>
             <th class="px-4 py-2 border">{{ __('Jegy') }}</th>
             <th class="px-4 py-2 border">{{ __('Dátum') }}</th>
-            <th class="px-4 py-2 border">{{ __('Műveletek') }}</th> <!-- Add header for actions -->
+            @auth<th class="px-4 py-2 border">{{ __('Műveletek') }}</th> @endauth
         </tr>
     </thead>
     <tbody>
@@ -50,8 +45,8 @@
             </td>
             <td class="px-4 py-2 border">{{ $mark->mark }}</td>
             <td class="px-4 py-2 border">{{ \Carbon\Carbon::parse($mark->date)->format('Y. m. d.') }}</td>
-            <td class="px-4 py-2 border">
-                <!-- Add Delete button here -->
+            @auth<td class="px-4 py-2 border">
+               
                 <form action="{{ route('marks.destroy', $mark->id) }}" method="POST" style="display:inline;">
                     @csrf
                     @method('DELETE')
@@ -59,7 +54,7 @@
                         Törlés
                     </button>
                 </form>
-            </td>
+            </td>@endauth
         </tr>
         @endforeach
     </tbody>

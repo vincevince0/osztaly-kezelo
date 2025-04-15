@@ -14,7 +14,7 @@
                         $name = $classData->first()->name;
                     @endphp
                     <form method="GET" action="{{ request()->url() }}">
-                        {{ __('Válassz Évfolasdyamot: ') }}
+                        {{ __('Válassz Évfolyamot: ') }}
                         <select name="year_id" id="select-year" title="Évfolyam" onchange="this.form.submit()">
                         @foreach($classData as $class)
                                 <option value="{{ $class->year }}" {{ request()->get('year_id') == $class->year ? 'selected' : '' }}>

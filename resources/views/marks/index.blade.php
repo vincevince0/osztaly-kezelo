@@ -14,7 +14,7 @@
                         <select name="class_id" id="select-class" title="Osztály" onchange="this.form.submit()">
                             <option value="0">-- Osztályok --</option>
                             @foreach($classes as $class)
-                            <option value="{{ $class->id-36}}" {{ request()->get('class_id') == $class->id ? 'selected' : '' }}>
+                            <option value="{{ $class->id}}" {{ request()->get('class_id') == $class->id ? 'selected' : '' }}>
                                     {{ $class->name }} 
                                 </option>
                             @endforeach

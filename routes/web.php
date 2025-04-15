@@ -11,7 +11,6 @@ use App\Http\Controllers\SubjectCrudController;
 use App\Http\Controllers\ClassCrudController;
 use App\Http\Controllers\Classes_SubjectCrudController;
 use App\Http\Controllers\MarkCrudController;
-
 use App\Http\Controllers\MarkController;
 
 Route::get('/', function () {
@@ -64,10 +63,7 @@ Route::resource('subjectscrud', SubjectCrudController::class);
 require __DIR__.'/auth.php';
 
 Route::get('/students/{student}/marks', [MarkController::class, 'show'])->name('students.marks');
-
-Route::resource('classes',ClassController::class);
 Route::resource('marks',MarkController::class);
-Route::resource('students', StudentController::class);
 
 
 

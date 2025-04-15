@@ -63,7 +63,19 @@ class StudentController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $student = Student::where('id', $id);
+        /*$student = Student::where('id', $id);
+        $student->class_id = $request->input('class_id');
+        $student->save();*/
+
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'gender' => 'required|in:F,N',
+            'class_id' => 'required|exists:classes,id',
+        ]);
+
+        $student = Student::find($id);
+        $student->name = $request->input('name');
+        $student->gender = $request->input('gender');
         $student->class_id = $request->input('class_id');
         $student->save();
 
