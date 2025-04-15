@@ -14,7 +14,7 @@
                         <select name="class_id" id="select-class" title="Osztály" onchange="this.form.submit()">
                             <option value="0">-- Osztályok --</option>
                             @foreach($classes as $class)
-                            <option value="{{ $class->id-36 }}" {{ request()->get('class_id') == $class->id ? 'selected' : '' }}>
+                            <option value="{{ $class->id-36}}" {{ request()->get('class_id') == $class->id ? 'selected' : '' }}>
                                     {{ $class->name }} 
                                 </option>
                             @endforeach
@@ -29,7 +29,7 @@
                             <li class="flex justify-between items-center mb-2">
                             <span>{{ $student->name }}</span>
                             <div class="flex gap-2">
-                                <a href="{{ route('marks.show', $student->id) }}?class_id={{ request()->get('class_id') }}">
+                            <a href="{{ route('students.marks', $student->id) }}">
                                 <button class="bg-white text-black px-2 py-1 rounded border hover:bg-gray-100">Jegyek</button>
                                 </a>
 

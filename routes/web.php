@@ -19,11 +19,14 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::get('/students/{student}/marks', [MarkController::class, 'show'])->name('students.marks');
+
 Route::resource('classes',ClassController::class);
 Route::resource('marks',MarkController::class);
 Route::resource('students', StudentController::class);
 
-Route::get('/marks/{student}', [MarkController::class, 'show'])->name('marks.show');
+
 
 
 require __DIR__.'/auth.php';

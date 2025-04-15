@@ -3,15 +3,17 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Mark;
 
 class Student extends Model
 {
     public $timestamps = false;
 
-    function mark()
-    {
-        return $this->hasMany(Mark::class);
-    }
+    public function marks()
+{
+    return $this->hasMany(\App\Models\Mark::class);
+}
+
 
     function class()
     {
