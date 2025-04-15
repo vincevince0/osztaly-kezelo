@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClassController;
 use App\Http\Controllers\Class_AverageController;
 use App\Http\Controllers\CrudController;
+use App\Http\Controllers\StudentController;
 use App\Http\Controllers\StudentCrudController;
 use App\Http\Controllers\SubjectCrudController;
 use App\Http\Controllers\ClassCrudController;
@@ -54,7 +55,7 @@ Route::get('/crud.marks', [MarkCrudController::class, 'index'])->name('crud.mark
 Route::resource('markscrud',MarkCrudController::class);
 Route::resource('classes_subjectscrud',controller: Classes_SubjectCrudController::class);
 Route::resource('classescrud',ClassCrudController::class);
-Route::resource('classes',ClassController::class);
+//Route::resource('classes',ClassController::class);
 Route::resource('class_average',Class_AverageController::class);
 Route::resource('crud', CrudController::class);
 Route::resource('studentscrud', StudentCrudController::class);
