@@ -29,7 +29,7 @@
 
             <!-- Page Content -->
             <main>
-                {{ $slot }}
+                {{ $slot }} <!-- Keep $slot here for Blade components -->
             </main>
         </div>
     </body>

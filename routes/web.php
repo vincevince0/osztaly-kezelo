@@ -12,6 +12,7 @@ use App\Http\Controllers\ClassCrudController;
 use App\Http\Controllers\Classes_SubjectCrudController;
 use App\Http\Controllers\MarkCrudController;
 
+use App\Http\Controllers\MarkController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -60,4 +61,15 @@ Route::resource('class_average',Class_AverageController::class);
 Route::resource('crud', CrudController::class);
 Route::resource('studentscrud', StudentCrudController::class);
 Route::resource('subjectscrud', SubjectCrudController::class);
+require __DIR__.'/auth.php';
+
+Route::get('/students/{student}/marks', [MarkController::class, 'show'])->name('students.marks');
+
+Route::resource('classes',ClassController::class);
+Route::resource('marks',MarkController::class);
+Route::resource('students', StudentController::class);
+
+
+
+
 require __DIR__.'/auth.php';

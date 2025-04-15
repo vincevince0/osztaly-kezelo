@@ -14,8 +14,8 @@
                         <select name="class_id" id="select-class" title="Osztály" onchange="this.form.submit()">
                             <option value="0">-- Osztályok --</option>
                             @foreach($classes as $class)
-                                <option value="{{ $class->id-36 }}" {{ request()->get('class_id') == $class->id ? 'selected' : '' }}>
-                                    {{ $class->name }}
+                            <option value="{{ $class->id-36}}" {{ request()->get('class_id') == $class->id ? 'selected' : '' }}>
+                                    {{ $class->name }} 
                                 </option>
                             @endforeach
                         </select>
@@ -25,13 +25,24 @@
                         @if(request()->has('class_id'))
                             <h3 class="font-semibold text-lg mt-4">{{ __('Diákok az osztályban: ') }}</h3>
                             <ul>
-                                @foreach($class_id->students as $student)
-                                    <li>{{ $student->name }}</li>
-                                @endforeach
-                            </ul>
+                            @foreach($students->where('class_id', request()->get('class_id'))->sortBy('name') as $student)
+                            <li class="flex justify-between items-center mb-2">
+                            <span>{{ $student->name }}</span>
+                            <div class="flex gap-2">
+                            <a href="{{ route('students.marks', $student->id) }}">
+                                <button class="bg-white text-black px-2 py-1 rounded border hover:bg-gray-100">Jegyek</button>
+                                </a>
+
+                            </div>
+                        </li>
+
+                            @endforeach
+                        </ul>
+
                         @else
                             <p>{{ __('Válasszon ki egy osztályt.') }}</p>
                         @endif
+
                     </div>
                 </div>
             </div>

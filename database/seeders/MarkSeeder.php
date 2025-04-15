@@ -7,6 +7,7 @@ use App\Models\Mark;
 use App\Models\Student;
 use App\Models\Osztaly;
 use App\Models\Classes_Subject;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Carbon\Carbon;
 
 class MarkSeeder extends Seeder
@@ -40,6 +41,22 @@ class MarkSeeder extends Seeder
                     'date' => Carbon::now()->toDateString(), // mai dátum
                 ]);
             }
+        $items = [
+            ['student_id' => 1, 'subject_id' => 1, 'logo' => null],
+            ['student_id' => 2, 'subject_id' => 1, 'logo' => null],
+            ['student_id' => 3, 'subject_id' => 1, 'logo' => null],
+            ['student_id' => 4, 'subject_id' => 1, 'logo' => null],
+            ['student_id' => 5, 'subject_id' => 1, 'logo' => null],
+        ];
+
+        foreach ($items as $item) {
+            $mark = new Mark();
+            $mark->student_id = $item['student_id'];
+            $mark->subject_id = $item['subject_id'];
+            $mark->mark = rand(1, 5); // Random mark between 1 and 5
+            $mark->date = Carbon::now()->subDays(rand(1, 180))->format('Y-m-d H:i:s'); // Random date within the last 180 days
+            $mark->logo = $item['logo'];
+            $mark->save();
         }
     }
 }
