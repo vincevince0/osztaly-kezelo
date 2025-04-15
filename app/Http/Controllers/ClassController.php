@@ -22,7 +22,7 @@ class ClassController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -30,7 +30,7 @@ class ClassController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
@@ -47,9 +47,12 @@ class ClassController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($year,$class)
     {
-        //
+        $classes = Osztaly::all();
+        $classData = Osztaly::where('year', $year)->where('name', $class)->get();
+        $students = Student::all();
+        return view('classes.edit', compact('classes','classData','students'));
     }
 
     /**

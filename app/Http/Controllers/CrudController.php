@@ -21,9 +21,10 @@ class CrudController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create($year,$class)
     {
-        //
+        $classData = Osztaly::where('year', $year)->where('name', $class)->get();
+        return view('students.create', compact('classData'));
     }
 
     /**
@@ -31,7 +32,13 @@ class CrudController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $student  = new Student();
+        $student->name = $request->input('name');
+        $student->gender = $request->input('gender');
+        $student->class_id = $request->input('class_id');
+        $student->save();
+
+        return redirect()->route('classes.index')->with('success', "{$student->name} sikeresen létrehozva");
     }
 
     /**
@@ -45,9 +52,12 @@ class CrudController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id,$classid)
     {
-        //
+        $classes = Osztaly::all();
+        $year = $classes->firstWhere('id', $classid)->year ?? null;
+        $student = Student::where('id', $id)->get();
+        return view('students.edit', compact('student','classes','year'));
     }
 
     /**
@@ -55,7 +65,11 @@ class CrudController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $student = Student::where('id', $id);
+        $student->class_id = $request->input('class_id');
+        $student->save();
+
+        return redirect()->route('classes.index')->with('alert', "{$student->name} sikeresen módosítva");
     }
 
     /**
@@ -63,6 +77,9 @@ class CrudController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $student = Student::findOrFail($id);
+        $student->delete();
+
+        return redirect()->route('classes.index')->with('success', 'Student deleted successfully.');
     }
 }
